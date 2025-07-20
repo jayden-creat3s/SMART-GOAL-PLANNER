@@ -36,7 +36,7 @@ const App = () => {
 
   return (
     <div className="p-6 space-y-6">
-      <h1 className="text-3xl font-bold text-center">💰 Financial Goals Dashboard</h1>
+      <h1 className="text-3xl font-bold text-center">Financial Goals Planner</h1>
 
       <OverviewPanel goals={goals} />
 

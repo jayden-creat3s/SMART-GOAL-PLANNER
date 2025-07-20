@@ -2,17 +2,19 @@ import React from 'react';
 
 const OverviewPanel = ({ goals }) => {
   const totalGoals = goals.length;
-  const totalTarget = goals.reduce((sum, g) => sum + g.targetAmount, 0);
-  const totalSaved = goals.reduce((sum, g) => sum + g.savedAmount, 0);
-  const progress = totalTarget ? (totalSaved / totalTarget) * 100 : 0;
+
+  const totalTarget = goals.reduce((sum, g) => sum + Number(g.targetAmount || 0), 0);
+  const totalSaved = goals.reduce((sum, g) => sum + Number(g.savedAmount || 0), 0);
+
+  const progress = totalTarget > 0 ? (totalSaved / totalTarget) * 100 : 0;
 
   return (
     <div className="overview-panel">
       <h2>Overview</h2>
-      <p>Total Goals: {totalGoals}</p>
-      <p>Total Target: ${totalTarget.toLocaleString()}</p>
-      <p>Total Saved: ${totalSaved.toLocaleString()}</p>
-      <p>Overall Progress: {progress.toFixed(2)}%</p>
+      <p>Total Goals: <strong>{totalGoals}</strong></p>
+      <p>Total Target: <strong>${totalTarget.toLocaleString()}</strong></p>
+      <p>Total Saved: <strong>${totalSaved.toLocaleString()}</strong></p>
+      <p>Overall Progress: <strong>{progress.toFixed(2)}%</strong></p>
     </div>
   );
 };

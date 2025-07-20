@@ -5,7 +5,7 @@ const DepositForm = ({ goals, onDeposit }) => {
   const [amount, setAmount] = useState('');
 
   useEffect(() => {
-    if (goals.length > 0 && !goals.find(g => g.id === Number(selectedGoalId))) {
+    if (goals.length > 0 && !goals.find(g => g.id === selectedGoalId)) {
       setSelectedGoalId('');
     }
   }, [goals]);
@@ -14,13 +14,14 @@ const DepositForm = ({ goals, onDeposit }) => {
     e.preventDefault();
     if (!selectedGoalId || !amount) return;
 
-    onDeposit(parseInt(selectedGoalId), parseFloat(amount));
+    onDeposit(selectedGoalId, parseFloat(amount));
     setAmount('');
   };
 
   return (
     <form onSubmit={handleSubmit} className="goal-form">
       <h2>Deposit to Goal</h2>
+
       <select
         value={selectedGoalId}
         onChange={(e) => setSelectedGoalId(e.target.value)}
@@ -29,7 +30,7 @@ const DepositForm = ({ goals, onDeposit }) => {
         <option value="">Select a goal</option>
         {goals.map((goal) => (
           <option key={goal.id} value={goal.id}>
-            {goal.title}
+            {goal.name}
           </option>
         ))}
       </select>
