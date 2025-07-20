@@ -1,3 +1,13 @@
 {
-  "goals": []
+  "goals": [
+    {
+      "id": "3d2a",
+      "name": "New Car",
+      "targetAmount": 200000,
+      "savedAmount": 100000,
+      "category": "Travel",
+      "deadline": "2026-02-25",
+      "createdAt": "2025-07-20"
+    }
+  ]
 }
